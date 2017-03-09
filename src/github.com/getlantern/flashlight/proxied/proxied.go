@@ -388,8 +388,9 @@ func chained(rootCA string, persistent bool) (http.RoundTripper, error) {
 		},
 	}
 	if persistent {
-		tr.MaxIdleTime = 30 * time.Second
-		tr.EnforceMaxIdleTime()
+		//tr.MaxIdleTime = 30 * time.Second
+		tr.IdleConnTimeout = 30 * time.Second
+		//tr.EnforceMaxIdleTime()
 	}
 
 	if rootCA != "" {

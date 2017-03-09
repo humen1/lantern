@@ -17,9 +17,9 @@ import (
 func (client *Client) newReverseProxy() *httputil.ReverseProxy {
 	transport := &http.Transport{
 		TLSHandshakeTimeout: 40 * time.Second,
-		MaxIdleTime:         30 * time.Second,
+		IdleConnTimeout:     30 * time.Second,
 	}
-	transport.EnforceMaxIdleTime()
+	//transport.EnforceMaxIdleTime()
 
 	// TODO: would be good to make this sensitive to QOS, which
 	// right now is only respected for HTTPS connections. The
